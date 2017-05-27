@@ -1,6 +1,10 @@
 # OpenCV_raspberry_remote_camera
 基于opencv的树莓派远程视频传输
 
+## 参考
+- [基于Socket和OpenCV的实时视频传输（On Windows）](http://blog.csdn.net/pengz0807/article/details/52204134)
+- [基于Socket和OpenCV的实时视频传输（On Linux）](http://blog.csdn.net/pengz0807/article/details/52204475)
+
 # OpenCV_raspberry
 为树莓派编译opencv，基于visualGDB的项目，不包含opencv源码和编译结果！！
 
