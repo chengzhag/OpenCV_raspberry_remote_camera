@@ -22,7 +22,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="OpenCVCameraDemo.cpp">
+    <ClCompile Include="raspberry_client.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketMatTransmissionClient.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,5 +47,10 @@
     <None Include="OpenCVCameraDemo-Release.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SocketMatTransmissionClient.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

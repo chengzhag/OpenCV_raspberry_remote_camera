@@ -2,9 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Raspicam", "Raspicam\Raspicam.vcxproj", "{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCVCameraDemo", "OpenCVCameraDemo\OpenCVCameraDemo.vcxproj", "{C643C38C-4CC0-434C-916C-74E8716B89CA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCV_raspberry_remote_camera_client", "OpenCVCameraDemo\OpenCVCameraDemo.vcxproj", "{C643C38C-4CC0-434C-916C-74E8716B89CA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCV_windows_remote_camera_server", "OpenCV_raspberry_remote_camera_server\OpenCV_raspberry_remote_camera_server.vcxproj", "{BD06AB79-0CF9-4B4F-88D4-946127C1D5C7}"
 EndProject
@@ -18,12 +16,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Debug|x64.ActiveCfg = Debug|Win32
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Debug|x86.ActiveCfg = Debug|Win32
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Debug|x86.Build.0 = Debug|Win32
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Release|x64.ActiveCfg = Release|Win32
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Release|x86.ActiveCfg = Release|Win32
-		{A03FB604-D0D2-4EE1-AB09-68A83FBBC4C5}.Release|x86.Build.0 = Release|Win32
 		{C643C38C-4CC0-434C-916C-74E8716B89CA}.Debug|x64.ActiveCfg = Debug|Win32
 		{C643C38C-4CC0-434C-916C-74E8716B89CA}.Debug|x86.ActiveCfg = Debug|Win32
 		{C643C38C-4CC0-434C-916C-74E8716B89CA}.Debug|x86.Build.0 = Debug|Win32

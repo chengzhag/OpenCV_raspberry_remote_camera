@@ -1,6 +1,14 @@
 # OpenCV_raspberry_remote_camera
 基于opencv的树莓派远程视频传输
 
+## 问题？
+
+### 在调树莓派客户端时，出现“a SIGILL  – illegal instruction ”错误？
+
+> [SIGILL WHEN DEBUGGING ON RASPBERRY PI](https://sysprogs.com/w/forums/topic/sigill-when-debugging-on-raspberry-pi/)
+
+根据帖子，是因为旧版树莓派固件的bug，
+
 ## 参考
 - [基于Socket和OpenCV的实时视频传输（On Windows）](http://blog.csdn.net/pengz0807/article/details/52204134)
 - [基于Socket和OpenCV的实时视频传输（On Linux）](http://blog.csdn.net/pengz0807/article/details/52204475)

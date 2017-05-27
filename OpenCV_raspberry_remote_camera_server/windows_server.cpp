@@ -10,16 +10,21 @@
 
 
 
-
+#include <iostream>
 #include "WinsockMatTransmissionServer.h"  
+
+using namespace std;
 
 int main()
 {
+	cout << "socket connecting..." << endl;
 	WinsockMatTransmissionServer socketMat;
 	if (socketMat.socketConnect(6666) < 0)
 	{
+		cout << "socket connecting error!" << endl;
 		return 0;
 	}
+	cout << "socket connecting success!" << endl;
 
 	cv::Mat image;
 	while (1)
@@ -27,7 +32,7 @@ int main()
 		if (socketMat.receive(image) > 0)
 		{
 			cv::imshow("", image);
-			cv::waitKey(30);
+			cv::waitKey(1);
 		}
 	}
 

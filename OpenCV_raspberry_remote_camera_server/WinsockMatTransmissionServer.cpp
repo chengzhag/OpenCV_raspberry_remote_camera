@@ -76,7 +76,7 @@ int WinsockMatTransmissionServer::receive(cv::Mat& image)
 
 	while (1)
 	{
-		for (int i = 0; i < 32; i++)
+		for (int i = 0; i < PACKAGE_NUM; i++)
 		{
 			int pos = 0;
 			int len0 = 0;
@@ -94,8 +94,8 @@ int WinsockMatTransmissionServer::receive(cv::Mat& image)
 
 			count = count + data.flag;
 
-			int num1 = IMG_HEIGHT / 32 * i;
-			for (int j = 0; j < IMG_HEIGHT / 32; j++)
+			int num1 = IMG_HEIGHT / PACKAGE_NUM * i;
+			for (int j = 0; j < IMG_HEIGHT / PACKAGE_NUM; j++)
 			{
 				int num2 = j * IMG_WIDTH * 3;
 				uchar* ucdata = img.ptr<uchar>(j + num1);
@@ -107,7 +107,7 @@ int WinsockMatTransmissionServer::receive(cv::Mat& image)
 
 			if (data.flag == 2)
 			{
-				if (count == 33)
+				if (count == PACKAGE_NUM+1)
 				{
 					image = img;
 					return 1;

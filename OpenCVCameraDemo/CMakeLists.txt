@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.7)
 project(OpenCVCameraDemo)
 set(LIBRARIES_FROM_REFERENCES "")
-add_executable(OpenCVCameraDemo OpenCVCameraDemo.cpp)
+add_executable(OpenCVCameraDemo raspberry_client.cpp SocketMatTransmissionClient.cpp)
 target_link_libraries(OpenCVCameraDemo "${LIBRARIES_FROM_REFERENCES}")
 
 find_package(OpenCV REQUIRED)

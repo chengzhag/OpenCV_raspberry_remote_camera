@@ -90,10 +90,10 @@ int WinsockMatTransmissionClient::transmit(cv::Mat image)
 		return -1;
 	}
 
-	for (int k = 0; k < 32; k++)
+	for (int k = 0; k < PACKAGE_NUM; k++)
 	{
-		int num1 = IMG_HEIGHT / 32 * k;
-		for (int i = 0; i < IMG_HEIGHT / 32; i++)
+		int num1 = IMG_HEIGHT / PACKAGE_NUM * k;
+		for (int i = 0; i < IMG_HEIGHT / PACKAGE_NUM; i++)
 		{
 			int num2 = i * IMG_WIDTH * 3;
 			uchar* ucdata = image.ptr<uchar>(i + num1);
@@ -103,7 +103,7 @@ int WinsockMatTransmissionClient::transmit(cv::Mat image)
 			}
 		}
 
-		if (k == 31)
+		if (k == PACKAGE_NUM-1)
 			data.flag = 2;
 		else
 			data.flag = 1;

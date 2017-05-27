@@ -180,7 +180,7 @@
   <CustomDebug>
     <PreDebugActions>
       <CustomActionBase xsi:type="FileTransferAction">
-        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <SkipWhenRunningCommandList>true</SkipWhenRunningCommandList>
         <SourceHost>
           <Transport>None</Transport>
         </SourceHost>
@@ -193,7 +193,7 @@
         <DestinationFilePath>$(DeployDir)/libraspicam.so.0.1</DestinationFilePath>
       </CustomActionBase>
       <CustomActionBase xsi:type="FileTransferAction">
-        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <SkipWhenRunningCommandList>true</SkipWhenRunningCommandList>
         <SourceHost>
           <Transport>None</Transport>
         </SourceHost>

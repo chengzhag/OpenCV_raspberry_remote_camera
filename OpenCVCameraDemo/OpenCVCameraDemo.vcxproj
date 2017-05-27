@@ -12,6 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C643C38C-4CC0-434C-916C-74E8716B89CA}</ProjectGuid>
+    <ProjectName>OpenCV_raspberry_remote_camera_client</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -63,7 +64,8 @@
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OpenCVCameraDemo.cpp" />
+    <ClCompile Include="raspberry_client.cpp" />
+    <ClCompile Include="SocketMatTransmissionClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
@@ -73,6 +75,9 @@
     <None Include="OpenCVCameraDemo-Release.vgdbsettings" />
     <None Include="toolchain-Debug.cmake" />
     <None Include="toolchain-Release.cmake" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SocketMatTransmissionClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
