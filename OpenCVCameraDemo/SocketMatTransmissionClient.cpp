@@ -63,7 +63,15 @@ void SocketMatTransmissionClient::socketDisconnect(void)
   
 int SocketMatTransmissionClient::transmit(cv::Mat image)  
 {  
-	imencode(".jpg", image, buf);
+	vector<int> compressionParams; 
+	compressionParams.push_back(IMWRITE_JPEG_QUALITY);
+	compressionParams.push_back(50);
+//	compressionParams.push_back(IMWRITE_JPEG_OPTIMIZE);
+//	compressionParams.push_back(1);
+	imencode(".jpg",
+		image,
+		buf,
+		compressionParams);
 	uint64_t bufSize = buf.size();
 	cout << buf.size() << endl;
 	if (buf.data() == NULL)

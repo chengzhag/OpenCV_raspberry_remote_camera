@@ -84,12 +84,27 @@ int WinsockMatTransmissionServer::receive(cv::Mat& image)
 		return -1;
 	}
 	buf.resize(bufSize);
+
+	////方案一，循环读取
+	//uint64_t index = 0, len = 0;
+	//while (index < bufSize)
+	//{
+	//	len = recv(sockConn, (char*)buf.data() + index, bufSize - index, MSG_WAITALL);
+	//	if (len < 0)
+	//	{
+	//		printf("Server Recieve Data Failed!\n");
+	//		return -1;
+	//	}
+	//	index += len;
+	//}
+
+	//方案二，阻塞recv
 	if (recv(sockConn, (char*)buf.data(), bufSize, MSG_WAITALL) != bufSize)
 	{
 		printf("Server Recieve Data Failed!\n");
 		return -1;
 	}
 	
-	image = imdecode(buf, IMREAD_COLOR);
+	image = imdecode(buf, IMREAD_GRAYSCALE);
 	return 1;
 }
