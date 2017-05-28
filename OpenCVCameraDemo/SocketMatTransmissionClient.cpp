@@ -10,7 +10,11 @@
   
   
 #include "SocketMatTransmissionClient.h"  
-  
+#include <iostream>
+
+using namespace std;
+using namespace cv;  
+
 SocketMatTransmissionClient::SocketMatTransmissionClient(void)  
 {  
 }  
@@ -59,40 +63,24 @@ void SocketMatTransmissionClient::socketDisconnect(void)
   
 int SocketMatTransmissionClient::transmit(cv::Mat image)  
 {  
-	if (image.empty())  
-	{  
+	imencode(".jpg", image, buf);
+	uint64_t bufSize = buf.size();
+	cout << buf.size() << endl;
+	if (buf.data() == NULL)
+	{
 		printf("empty image\n\n");  
 		return -1;  
-	}  
-  
-	if (image.cols != IMG_WIDTH || image.rows != IMG_HEIGHT || image.type() != CV_8UC3)  
+	}
+	if (send(sockClient, &bufSize, sizeof(bufSize), 0) < 0)
+	{
+		printf("send head error: %s(errno: %d)\n", strerror(errno), errno);  
+		return -1;  
+	}
+	if (send(sockClient, buf.data(), bufSize, 0) < 0)  
 	{  
-		printf("the image must satisfy : cols == IMG_WIDTH£¨%d£©  rows == IMG_HEIGHT£¨%d£© type == CV_8UC3\n\n", IMG_WIDTH, IMG_HEIGHT);  
+		printf("send image error: %s(errno: %d)\n", strerror(errno), errno);  
 		return -1;  
 	}  
-  
-	for (int k = 0; k < PACKAGE_NUM; k++)   
-	{  
-		int num1 = IMG_HEIGHT / PACKAGE_NUM * k;  
-		for (int i = 0; i < IMG_HEIGHT / PACKAGE_NUM; i++)  
-		{  
-			int num2 = i * IMG_WIDTH * 3;  
-			uchar* ucdata = image.ptr<uchar>(i + num1);  
-			for (int j = 0; j < IMG_WIDTH * 3; j++)  
-			{  
-				data.buf[num2 + j] = ucdata[j];  
-			}  
-		}  
-  
-		if (k == PACKAGE_NUM - 1)  
-			data.flag = 2;  
-		else  
-			data.flag = 1;  
-  
-		if (send(sockClient, (char *)(&data), sizeof(data), 0) < 0)  
-		{  
-			printf("send image error: %s(errno: %d)\n", strerror(errno), errno);  
-			return -1;  
-		}  
-	}  
+	return 1;
+	
 }  

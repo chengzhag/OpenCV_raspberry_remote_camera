@@ -10,7 +10,10 @@
 
 
 #include "WinsockMatTransmissionServer.h"  
+#include "iostream"
 
+using namespace std;
+using namespace cv;
 
 WinsockMatTransmissionServer::WinsockMatTransmissionServer(void)
 {
@@ -69,56 +72,24 @@ void WinsockMatTransmissionServer::socketDisconnect(void)
 
 int WinsockMatTransmissionServer::receive(cv::Mat& image)
 {
-	cv::Mat img(IMG_HEIGHT, IMG_WIDTH, CV_8UC3, cv::Scalar(0));
-
-	int needRecv = sizeof(recvbuf);
-	int count = 0;
-
-	while (1)
+	uint64_t bufSize = 0;
+	if (recv(sockConn, (char*)&bufSize, sizeof(bufSize), MSG_WAITALL) != sizeof(bufSize))
 	{
-		for (int i = 0; i < PACKAGE_NUM; i++)
-		{
-			int pos = 0;
-			int len0 = 0;
-
-			while (pos < needRecv)
-			{
-				len0 = recv(sockConn, (char*)(&data) + pos, needRecv - pos, 0);
-				if (len0 < 0)
-				{
-					printf("Server Recieve Data Failed!\n");
-					return -1;
-				}
-				pos += len0;
-			}
-
-			count = count + data.flag;
-
-			int num1 = IMG_HEIGHT / PACKAGE_NUM * i;
-			for (int j = 0; j < IMG_HEIGHT / PACKAGE_NUM; j++)
-			{
-				int num2 = j * IMG_WIDTH * 3;
-				uchar* ucdata = img.ptr<uchar>(j + num1);
-				for (int k = 0; k < IMG_WIDTH * 3; k++)
-				{
-					ucdata[k] = data.buf[num2 + k];
-				}
-			}
-
-			if (data.flag == 2)
-			{
-				if (count == PACKAGE_NUM+1)
-				{
-					image = img;
-					return 1;
-					count = 0;
-				}
-				else
-				{
-					count = 0;
-					i = 0;
-				}
-			}
-		}
+		printf("Server Recieve Head Failed!\n");
+		return -1;
 	}
+	if (bufSize==0)
+	{
+		printf("Server Recieve Head 0!\n");
+		return -1;
+	}
+	buf.resize(bufSize);
+	if (recv(sockConn, (char*)buf.data(), bufSize, MSG_WAITALL) != bufSize)
+	{
+		printf("Server Recieve Data Failed!\n");
+		return -1;
+	}
+	
+	image = imdecode(buf, IMREAD_COLOR);
+	return 1;
 }

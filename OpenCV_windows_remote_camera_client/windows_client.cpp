@@ -25,7 +25,7 @@ int main()
 	//cv::VideoCapture capture(0);
 	cv::Mat image;
 	image=imread("lena.png");
-	resize(image, image, Size(640, 480));
+	resize(image, image, Size(320, 240));
 
 	while (1)
 	{

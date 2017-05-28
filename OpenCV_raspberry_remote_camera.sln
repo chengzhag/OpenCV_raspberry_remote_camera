@@ -3,10 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCV_raspberry_remote_camera_client", "OpenCVCameraDemo\OpenCVCameraDemo.vcxproj", "{C643C38C-4CC0-434C-916C-74E8716B89CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD06AB79-0CF9-4B4F-88D4-946127C1D5C7} = {BD06AB79-0CF9-4B4F-88D4-946127C1D5C7}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCV_windows_remote_camera_server", "OpenCV_raspberry_remote_camera_server\OpenCV_raspberry_remote_camera_server.vcxproj", "{BD06AB79-0CF9-4B4F-88D4-946127C1D5C7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenCV_windows_remote_camera_client", "OpenCV_windows_remote_camera_client\OpenCV_windows_remote_camera_client.vcxproj", "{33927550-05C8-4991-A39F-560829B8C377}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD06AB79-0CF9-4B4F-88D4-946127C1D5C7} = {BD06AB79-0CF9-4B4F-88D4-946127C1D5C7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
